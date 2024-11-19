@@ -15,61 +15,6 @@ import javax.inject.Inject
 class MediaRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context
 ) : MediaRepository {
-//    override fun getAllImageBuckets(): Flow<List<Bucket>> = flow {
-//        try {
-//            context.contentResolver.query(
-//                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//                arrayOf(
-//                    MediaStore.Images.Media.BUCKET_ID,
-//                    MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
-//                    MediaStore.Images.Media._ID,
-//                    MediaStore.Images.Media.DATE_MODIFIED,
-//                ),
-//                null,
-//                null,
-//                "${MediaStore.Images.Media.DATE_MODIFIED} DESC"
-//            )?.use {
-//                if (it.moveToFirst()) {
-//                    val idIndex = it.getColumnIndex(MediaStore.Images.Media._ID)
-//                    val bucketIdIndex = it.getColumnIndex(MediaStore.Images.Media.BUCKET_ID)
-//                    val bucketDisplayNameIndex =
-//                        it.getColumnIndex(MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
-//                    val dateModifiedIndex = it.getColumnIndex(MediaStore.Images.Media.DATE_MODIFIED)
-//
-//                    val buckets = mutableMapOf<Long, Bucket>()
-//
-//                    do {
-//                        try {
-//                            val bucketId = it.getLong(bucketIdIndex)
-//                            if (buckets.containsKey(bucketId)) continue
-//
-//                            buckets[bucketId] = Bucket(
-//                                id = bucketId,
-//                                name = it.getString(bucketDisplayNameIndex),
-//                                dateModified = it.getLong(dateModifiedIndex),
-//                                thumbnailUri = ContentUris.withAppendedId(
-//                                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//                                    it.getLong(idIndex),
-//                                ),
-//                                isVideo = false
-//                            )
-//                        } catch (e: Throwable) {
-//                            e.printStackTrace()
-//                        }
-//                    } while (it.moveToNext())
-//
-//                    val result = buckets.values.toMutableList()
-//                    result.sortBy { bucket -> bucket.name }
-//
-//                    emit(result)
-//                }
-//            }
-//        } catch (e: Throwable) {
-//            e.printStackTrace()
-//            emit(listOf())
-//        }
-//
-//    }
 override fun getAllImageBuckets(): Flow<List<Bucket>> = flow {
     try {
         val query = context.contentResolver.query(

@@ -2,4 +2,6 @@
     <string name="app_name">Android Media Gallery</string>
     <string name="file_provider" translatable="false">com.zaryabshakir.mediagallery.presentation.views</string>
     <string name="description_image" translatable="false">image</string>
+    <string name="images">Images</string>
+    <string name="videos">Videos</string>
 </resources>
