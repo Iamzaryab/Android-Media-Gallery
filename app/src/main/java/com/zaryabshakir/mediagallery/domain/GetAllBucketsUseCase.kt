@@ -13,7 +13,11 @@ class GetAllBucketsUseCase @Inject constructor(private val repository: MediaRepo
         return when (mediaType) {
             MediaType.IMAGE.name -> {
                 repository.getAllImageBuckets()
-                    .map { bucketList -> bucketList.map { bucket -> BucketUIDataModel(bucket) } }
+                    .map { bucketList ->
+                        bucketList.map {
+                            bucket -> BucketUIDataModel(bucket)
+                        }
+                    }
             }
 
             MediaType.VIDEO.name -> {

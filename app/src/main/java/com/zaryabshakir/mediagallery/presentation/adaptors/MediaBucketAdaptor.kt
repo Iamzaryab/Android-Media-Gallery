@@ -36,7 +36,7 @@ class MediaBucketAdaptor(
 
         fun bind(bucket: BucketUIDataModel, position: Int) {
             with(binding){
-                load(img, bucket.thumbnailUri())
+//                load(img, bucket.thumbnailUri())
                 txtTitle.visibility = View.VISIBLE
                 txtTitle.text = bucket.getName()
                 selection.isSelected = position == selectedPosition

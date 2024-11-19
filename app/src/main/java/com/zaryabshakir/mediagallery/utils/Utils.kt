@@ -31,16 +31,16 @@ fun checkAndRequestGalleryPermission(activity: Activity): Boolean {
 }
 
 fun load(imageView: ImageView, uri: Uri, @DrawableRes fallback: Int = 0) {
-    GlideApp.with(imageView)
-        .load(uri)
-        .override(200)
-        .also {
-            if (fallback != 0) {
-                it.fallback(fallback)
-                    .error(fallback)
-            }
-
-        }
-        .transition(DrawableTransitionOptions.withCrossFade())
-        .into(imageView)
+//    GlideApp.with(imageView)
+//        .load(uri)
+//        .override(200)
+//        .also {
+//            if (fallback != 0) {
+//                it.fallback(fallback)
+//                    .error(fallback)
+//            }
+//
+//        }
+//        .transition(DrawableTransitionOptions.withCrossFade())
+//        .into(imageView)
 }

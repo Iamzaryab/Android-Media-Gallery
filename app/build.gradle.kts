@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id ("com.android.application")
+    id ("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
@@ -55,6 +55,7 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     implementation(libs.glide)
+    kapt (libs.glide.compiler)
 
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.android.test.ext.junit)
