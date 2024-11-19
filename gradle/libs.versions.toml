@@ -1,7 +1,7 @@
 [versions]
-android_gradle_plugin = "8.6.1"
+android_gradle_plugin = "8.7.2"
 navigation-safe-args = "2.8.4"
-kotlin = "1.9.0"
+kotlin = "2.0.0"
 android-application = "8.1.4"
 android_core_ktx = "1.15.0"
 android_appcompat = "1.7.0"
@@ -27,6 +27,7 @@ navigation_fragment_ktx = { module = "androidx.navigation:navigation-fragment-kt
 navigation_ui_ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt_compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android_gradle_plugin" }
 navigation-safe-args = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigation-safe-args" }
@@ -34,4 +35,5 @@ hilt-gradle-plugin = { group = "com.google.dagger", name = "hilt-android-gradle-
 
 [plugins]
 android_application = { id = "com.android.application", version.ref = "android-application" }
+android_library ={id = "com.android.library",version.ref= "android-application"}
 kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

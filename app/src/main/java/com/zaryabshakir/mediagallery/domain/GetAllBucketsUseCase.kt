@@ -1,0 +1,27 @@
+package com.zaryabshakir.mediagallery.domain
+
+import com.zaryabshakir.mediagallery.constants.MediaType
+import com.zaryabshakir.mediagallery.data.repository.MediaRepository
+import com.zaryabshakir.mediagallery.uimodel.BucketUIDataModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
+import javax.inject.Inject
+
+class GetAllBucketsUseCase @Inject constructor(private val repository: MediaRepository) {
+    fun getAllBuckets(mediaType: String): Flow<List<BucketUIDataModel>> {
+        return when (mediaType) {
+            MediaType.IMAGE.name -> {
+                repository.getAllImageBuckets()
+                    .map { bucketList -> bucketList.map { bucket -> BucketUIDataModel(bucket) } }
+            }
+
+            MediaType.VIDEO.name -> {
+                repository.getAllVideoBuckets()
+                    .map { bucketList -> bucketList.map { bucket -> BucketUIDataModel(bucket) } }
+            }
+
+            else -> flowOf()
+        }
+    }
+}

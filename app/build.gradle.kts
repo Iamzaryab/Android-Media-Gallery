@@ -4,11 +4,11 @@ plugins {
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    id ("dagger.hilt.android.plugin")
 }
 android {
     namespace = "com.zaryabshakir.mediagallery"
     compileSdk = 35
-
     defaultConfig {
         applicationId = "com.zaryabshakir.mediagallery"
         minSdk = 24
@@ -27,6 +27,11 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -47,7 +52,7 @@ dependencies {
     implementation(libs.navigation.ui.ktx)
 
     implementation(libs.hilt)
-    kapt(libs.hilt)
+    kapt(libs.hilt.compiler)
 
     implementation(libs.glide)
 
