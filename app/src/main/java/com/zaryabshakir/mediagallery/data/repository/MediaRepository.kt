@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 interface MediaRepository {
     fun getAllImageBuckets(): Flow<List<Bucket>>
     fun getAllVideoBuckets(): Flow<List<Bucket>>
-    fun getAllImages(bucket: Bucket): Flow<List<Media>>
-    fun getAllVideos(bucket: Bucket): Flow<List<Media>>
+    fun getAllImages(mediaId: String): Flow<List<Media>>
+    fun getAllVideos(mediaId: String): Flow<List<Media>>
 
 }

@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zaryabshakir.mediagallery.databinding.LayoutItemMediaBinding
-import com.zaryabshakir.mediagallery.uimodel.BucketUIDataModel
+import com.zaryabshakir.mediagallery.uimodel.MediaUIDataModel
 import com.zaryabshakir.mediagallery.utils.loadThumbnail
 
-class MediaBucketAdaptor(
-    private val buckets: List<BucketUIDataModel>,
-    val onBucketSelected: (BucketUIDataModel) -> Unit
-) : RecyclerView.Adapter<MediaBucketAdaptor.BucketViewHolder>() {
+class MediaItemsAdaptor(
+    private val media: List<MediaUIDataModel>,
+    val onMediaSelected: (MediaUIDataModel) -> Unit
+) : RecyclerView.Adapter<MediaItemsAdaptor.BucketViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BucketViewHolder {
         return BucketViewHolder(
             LayoutItemMediaBinding.inflate(
@@ -23,23 +23,23 @@ class MediaBucketAdaptor(
     }
 
     override fun onBindViewHolder(holder: BucketViewHolder, position: Int) {
-        holder.bind(buckets[position])
+        holder.bind(media[position])
     }
 
-    override fun getItemCount(): Int = buckets.size
+    override fun getItemCount(): Int = media.size
 
     inner class BucketViewHolder(private val binding: LayoutItemMediaBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(bucket: BucketUIDataModel) {
+        fun bind(media: MediaUIDataModel) {
             with(binding){
-                if (bucket.isVideo())
+                if (media.isVideo())
                     videoIcon.visibility=View.VISIBLE
-                loadThumbnail(img, bucket.getThumbnailUri())
+                loadThumbnail(img, media.getUri())
                 txtTitle.visibility = View.VISIBLE
-                txtTitle.text = bucket.getName()
+                txtTitle.text = media.getDisplayName()
                 img.setOnClickListener {
-                    onBucketSelected.invoke(bucket)
+                    onMediaSelected.invoke(media)
                 }
             }
         }

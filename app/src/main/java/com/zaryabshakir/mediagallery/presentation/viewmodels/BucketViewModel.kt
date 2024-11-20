@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class BucketViewModel @Inject constructor(
     private val bucketsUseCase: GetAllBucketsUseCase
-) : BaseViewModel<BucketUIEvent, BucketIntent>() {
+) : BaseViewModel<BucketUIEvent, BucketIntent>(BucketUIEvent.Loading) {
 
     override fun onEvent(screenEvent: BucketIntent) {
         when (screenEvent) {

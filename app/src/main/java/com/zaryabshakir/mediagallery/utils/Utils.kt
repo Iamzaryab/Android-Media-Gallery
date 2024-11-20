@@ -6,9 +6,10 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.widget.ImageView
-import androidx.annotation.DrawableRes
 import androidx.core.app.ActivityCompat
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.zaryabshakir.mediagallery.GlideApp
+import com.zaryabshakir.mediagallery.R
 
 fun checkAndRequestGalleryPermission(activity: Activity): Boolean {
     return if (Build.VERSION.SDK_INT >= 33) {
@@ -30,17 +31,20 @@ fun checkAndRequestGalleryPermission(activity: Activity): Boolean {
 
 }
 
-fun load(imageView: ImageView, uri: Uri, @DrawableRes fallback: Int = 0) {
-//    GlideApp.with(imageView)
-//        .load(uri)
-//        .override(200)
-//        .also {
-//            if (fallback != 0) {
-//                it.fallback(fallback)
-//                    .error(fallback)
-//            }
-//
-//        }
-//        .transition(DrawableTransitionOptions.withCrossFade())
-//        .into(imageView)
+fun loadThumbnail(imageView: ImageView, uri: Uri) {
+    GlideApp.with(imageView)
+        .load(uri)
+        .override(300)
+        .placeholder(R.drawable.default_img)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(imageView)
 }
+
+fun load(imageView: ImageView, uri: Uri) {
+    GlideApp.with(imageView)
+        .load(uri)
+        .override(1000)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(imageView)
+}
+

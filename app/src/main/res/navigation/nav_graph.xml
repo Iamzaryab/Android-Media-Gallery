@@ -10,16 +10,38 @@
         android:name="com.zaryabshakir.mediagallery.presentation.views.HomeFragment"
         android:label="HomeFragment" >
         <action
-            android:id="@+id/action_homeFragment_to_bucketFragment"
-            app:destination="@id/bucketFragment" />
+            android:id="@+id/action_homeFragment_to_mediaFragment"
+            app:destination="@id/mediaFragment" />
     </fragment>
     <fragment
-        android:id="@+id/bucketFragment"
-        android:name="com.zaryabshakir.mediagallery.presentation.views.BucketFragment"
-        android:label="BucketFragment" >
+        android:id="@+id/mediaFragment"
+        android:name="com.zaryabshakir.mediagallery.presentation.views.MediaFragment"
+        android:label="MediaFragment" >
         <argument
-            android:name="mediaType"
-            app:argType="string"
-            android:defaultValue='' />
+            android:name="bucket"
+            app:argType="com.zaryabshakir.mediagallery.uimodel.BucketUIDataModel" />
+        <action
+            android:id="@+id/action_mediaFragment_to_playVideoFragment"
+            app:destination="@id/playVideoFragment" />
+        <action
+            android:id="@+id/action_mediaFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/playVideoFragment"
+        android:name="com.zaryabshakir.mediagallery.presentation.views.PlayVideoFragment"
+        android:label="PlayVideoFragment" >
+        <argument
+            android:name="media"
+            app:argType="com.zaryabshakir.mediagallery.uimodel.MediaUIDataModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageViewerFragment"
+        android:name="com.zaryabshakir.mediagallery.presentation.views.ImageViewerFragment"
+        android:label="ImageViewerFragment" >
+        <argument
+            android:name="media"
+            app:argType="com.zaryabshakir.mediagallery.uimodel.MediaUIDataModel" />
     </fragment>
 </navigation>

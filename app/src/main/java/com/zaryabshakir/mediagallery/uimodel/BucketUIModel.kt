@@ -5,5 +5,6 @@ import android.net.Uri
 interface BucketUIModel {
     fun getId(): Long
     fun getName(): String
-    fun thumbnailUri(): Uri
+    fun getThumbnailUri(): Uri
+    fun isVideo():Boolean
 }
