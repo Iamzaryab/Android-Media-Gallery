@@ -97,4 +97,4 @@ This project handles media access permissions for images and videos based on And
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/Iamzaryab/Android-Media-Gallery.git>
