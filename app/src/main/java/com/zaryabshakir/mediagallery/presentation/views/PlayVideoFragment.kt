@@ -5,7 +5,7 @@ import android.view.View
 import androidx.navigation.fragment.navArgs
 import com.zaryabshakir.mediagallery.R
 import com.zaryabshakir.mediagallery.databinding.FragmentPlayVideoBinding
-import com.zaryabshakir.mediagallery.presentation.base.BaseFragment
+import com.zaryabshakir.mediagallery.presentation.views.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

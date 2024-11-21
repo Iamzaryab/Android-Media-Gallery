@@ -12,7 +12,7 @@ import com.zaryabshakir.mediagallery.R
 import com.zaryabshakir.mediagallery.constants.MediaType
 import com.zaryabshakir.mediagallery.databinding.FragmentHomeBinding
 import com.zaryabshakir.mediagallery.presentation.adapters.BucketsPagerAdapter
-import com.zaryabshakir.mediagallery.presentation.base.BaseFragment
+import com.zaryabshakir.mediagallery.presentation.views.base.BaseFragment
 import com.zaryabshakir.mediagallery.utils.checkMultiplePermissions
 import com.zaryabshakir.mediagallery.utils.checkPermission
 import com.zaryabshakir.mediagallery.utils.hide

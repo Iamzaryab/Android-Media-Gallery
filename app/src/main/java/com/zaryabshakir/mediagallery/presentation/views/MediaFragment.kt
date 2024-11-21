@@ -11,7 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.zaryabshakir.mediagallery.R
 import com.zaryabshakir.mediagallery.databinding.FragmentMediaBinding
 import com.zaryabshakir.mediagallery.presentation.adapters.MediaItemsAdapter
-import com.zaryabshakir.mediagallery.presentation.base.BaseFragment
+import com.zaryabshakir.mediagallery.presentation.views.base.BaseFragment
 import com.zaryabshakir.mediagallery.presentation.events.BucketUIEvent
 import com.zaryabshakir.mediagallery.presentation.events.MediaIntent
 import com.zaryabshakir.mediagallery.presentation.events.MediaUIEvent

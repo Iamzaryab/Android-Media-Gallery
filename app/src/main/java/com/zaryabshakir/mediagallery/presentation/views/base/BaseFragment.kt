@@ -1,4 +1,4 @@
-package com.zaryabshakir.mediagallery.presentation.base
+package com.zaryabshakir.mediagallery.presentation.views.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -11,7 +11,7 @@ import com.zaryabshakir.mediagallery.R
 import com.zaryabshakir.mediagallery.constants.Constants
 import com.zaryabshakir.mediagallery.databinding.FragmentBucketsBinding
 import com.zaryabshakir.mediagallery.presentation.adapters.MediaBucketAdapter
-import com.zaryabshakir.mediagallery.presentation.base.BaseFragment
+import com.zaryabshakir.mediagallery.presentation.views.base.BaseFragment
 import com.zaryabshakir.mediagallery.presentation.events.BucketIntent
 import com.zaryabshakir.mediagallery.presentation.events.BucketUIEvent
 import com.zaryabshakir.mediagallery.presentation.viewmodels.BucketViewModel
