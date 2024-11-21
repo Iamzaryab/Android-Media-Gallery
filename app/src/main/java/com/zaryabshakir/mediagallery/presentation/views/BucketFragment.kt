@@ -2,6 +2,7 @@ package com.zaryabshakir.mediagallery.presentation.views
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -82,13 +83,9 @@ class BucketFragment : BaseFragment<FragmentBucketsBinding>() {
 
     companion object {
         fun newInstance(type: String): BucketFragment {
-            val fragment = BucketFragment()
-            val args = Bundle().apply {
-                putString(Constants.MEDIA_TYPE, type)
+            return BucketFragment().apply {
+                arguments= bundleOf(Constants.MEDIA_TYPE to type)
             }
-            fragment.arguments = args
-            return fragment
-
         }
     }
 }
