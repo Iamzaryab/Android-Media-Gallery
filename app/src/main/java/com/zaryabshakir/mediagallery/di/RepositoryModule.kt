@@ -1,7 +1,7 @@
 package com.zaryabshakir.mediagallery.di
 
 import android.content.Context
-import com.zaryabshakir.mediagallery.data.repository.MediaRepository
+import com.zaryabshakir.mediagallery.domain.repository.MediaRepository
 import com.zaryabshakir.mediagallery.data.repository.MediaRepositoryImpl
 import dagger.Module
 import dagger.Provides

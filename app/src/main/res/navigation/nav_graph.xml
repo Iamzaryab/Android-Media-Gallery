@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
@@ -8,7 +9,8 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.zaryabshakir.mediagallery.presentation.views.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_mediaFragment"
             app:destination="@id/mediaFragment" />
@@ -16,7 +18,8 @@
     <fragment
         android:id="@+id/mediaFragment"
         android:name="com.zaryabshakir.mediagallery.presentation.views.MediaFragment"
-        android:label="MediaFragment" >
+        android:label="MediaFragment"
+        tools:layout="@layout/fragment_media">
         <argument
             android:name="bucket"
             app:argType="com.zaryabshakir.mediagallery.uimodel.BucketUIDataModel" />
@@ -31,7 +34,8 @@
     <fragment
         android:id="@+id/playVideoFragment"
         android:name="com.zaryabshakir.mediagallery.presentation.views.PlayVideoFragment"
-        android:label="PlayVideoFragment" >
+        android:label="PlayVideoFragment"
+        tools:layout="@layout/fragment_play_video">
         <argument
             android:name="media"
             app:argType="com.zaryabshakir.mediagallery.uimodel.MediaUIDataModel" />
@@ -39,7 +43,8 @@
     <fragment
         android:id="@+id/imageViewerFragment"
         android:name="com.zaryabshakir.mediagallery.presentation.views.ImageViewerFragment"
-        android:label="ImageViewerFragment" >
+        android:label="ImageViewerFragment"
+        tools:layout="@layout/fragment_image_viewer">
         <argument
             android:name="media"
             app:argType="com.zaryabshakir.mediagallery.uimodel.MediaUIDataModel" />

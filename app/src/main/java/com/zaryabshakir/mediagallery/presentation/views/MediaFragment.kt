@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.zaryabshakir.mediagallery.R
 import com.zaryabshakir.mediagallery.databinding.FragmentMediaBinding
-import com.zaryabshakir.mediagallery.presentation.adaptors.MediaItemsAdaptor
+import com.zaryabshakir.mediagallery.presentation.adapters.MediaItemsAdapter
 import com.zaryabshakir.mediagallery.presentation.events.BucketUIEvent
 import com.zaryabshakir.mediagallery.presentation.events.MediaIntent
 import com.zaryabshakir.mediagallery.presentation.events.MediaUIEvent
@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 class MediaFragment : Fragment(R.layout.fragment_media) {
     private lateinit var binding: FragmentMediaBinding
     private val viewModel: MediaViewModel by viewModels()
-    private lateinit var mediaAdaptor: MediaItemsAdaptor
+    private lateinit var mediaAdaptor: MediaItemsAdapter
     private val args: MediaFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,7 +51,7 @@ class MediaFragment : Fragment(R.layout.fragment_media) {
                     when (event) {
                         is MediaUIEvent.OnFetchMedia -> {
                             binding.listBuckets.apply {
-                                mediaAdaptor = MediaItemsAdaptor(
+                                mediaAdaptor = MediaItemsAdapter(
                                     media = event.media,
                                     onMediaSelected = { onMediaClicked(it) })
                                 adapter = mediaAdaptor

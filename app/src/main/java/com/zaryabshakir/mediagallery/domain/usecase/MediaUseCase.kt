@@ -1,6 +1,6 @@
-package com.zaryabshakir.mediagallery.domain
+package com.zaryabshakir.mediagallery.domain.usecase
 
-import com.zaryabshakir.mediagallery.data.repository.MediaRepository
+import com.zaryabshakir.mediagallery.domain.repository.MediaRepository
 import com.zaryabshakir.mediagallery.uimodel.BucketUIDataModel
 import com.zaryabshakir.mediagallery.uimodel.MediaUIDataModel
 import kotlinx.coroutines.flow.Flow

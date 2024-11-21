@@ -1,4 +1,4 @@
-package com.zaryabshakir.mediagallery.presentation.adaptors
+package com.zaryabshakir.mediagallery.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +8,10 @@ import com.zaryabshakir.mediagallery.databinding.LayoutItemMediaBinding
 import com.zaryabshakir.mediagallery.uimodel.MediaUIDataModel
 import com.zaryabshakir.mediagallery.utils.loadThumbnail
 
-class MediaItemsAdaptor(
+class MediaItemsAdapter(
     private val media: List<MediaUIDataModel>,
-    val onMediaSelected: (MediaUIDataModel) -> Unit
-) : RecyclerView.Adapter<MediaItemsAdaptor.BucketViewHolder>() {
+    private val onMediaSelected: (MediaUIDataModel) -> Unit
+) : RecyclerView.Adapter<MediaItemsAdapter.BucketViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BucketViewHolder {
         return BucketViewHolder(
             LayoutItemMediaBinding.inflate(
@@ -32,9 +32,11 @@ class MediaItemsAdaptor(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(media: MediaUIDataModel) {
-            with(binding){
+            with(binding) {
                 if (media.isVideo())
-                    videoIcon.visibility=View.VISIBLE
+                    videoIcon.visibility = View.VISIBLE
+                else
+                    videoIcon.visibility = View.GONE
                 loadThumbnail(img, media.getUri())
                 txtTitle.visibility = View.VISIBLE
                 txtTitle.text = media.getDisplayName()

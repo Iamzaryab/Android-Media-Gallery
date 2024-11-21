@@ -1,7 +1,7 @@
 package com.zaryabshakir.mediagallery.presentation.viewmodels
 
 import androidx.lifecycle.viewModelScope
-import com.zaryabshakir.mediagallery.domain.MediaUseCase
+import com.zaryabshakir.mediagallery.domain.usecase.MediaUseCase
 import com.zaryabshakir.mediagallery.presentation.events.MediaIntent
 import com.zaryabshakir.mediagallery.presentation.events.MediaUIEvent
 import com.zaryabshakir.mediagallery.uimodel.BucketUIDataModel

@@ -1,4 +1,4 @@
-package com.zaryabshakir.mediagallery.data.repository
+package com.zaryabshakir.mediagallery.domain.repository
 
 import com.zaryabshakir.mediagallery.data.models.Bucket
 import com.zaryabshakir.mediagallery.data.models.Media

@@ -8,6 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class MediaUIDataModel(private val media: Media) : MediaUIModel, Parcelable {
     override fun getId(): Long = media.id
+
     override fun getTitle(): String = media.title
 
     override fun getDisplayName(): String = media.displayName

@@ -3,9 +3,9 @@ package com.zaryabshakir.mediagallery.data.repository
 import android.content.ContentUris
 import android.content.Context
 import android.provider.MediaStore
-import android.util.Log
 import com.zaryabshakir.mediagallery.data.models.Bucket
 import com.zaryabshakir.mediagallery.data.models.Media
+import com.zaryabshakir.mediagallery.domain.repository.MediaRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -80,7 +80,7 @@ class MediaRepositoryImpl @Inject constructor(
                             )
                         )
                     } catch (e: Throwable) {
-                        Log.e("getAllImageBuckets", "Error processing bucket data", e)
+                        e.printStackTrace()
                     }
                 } while (cursor.moveToNext())
 
@@ -101,9 +101,9 @@ class MediaRepositoryImpl @Inject constructor(
                 result.addAll(buckets.values.sortedBy { it.name })
 
                 emit(result)
-            } ?: emit(emptyList())
+            } ?: run { emit(emptyList()) }
         } catch (e: Throwable) {
-            Log.e("getAllImageBuckets", "Error querying image buckets", e)
+            e.printStackTrace()
             emit(emptyList())
         }
     }
@@ -176,7 +176,7 @@ class MediaRepositoryImpl @Inject constructor(
                             )
                         )
                     } catch (e: Throwable) {
-                        Log.e("getAllVideoBuckets", "Error processing bucket data", e)
+                        e.printStackTrace()
                     }
                 } while (cursor.moveToNext())
 
@@ -199,7 +199,7 @@ class MediaRepositoryImpl @Inject constructor(
                 emit(result)
             } ?: emit(emptyList())
         } catch (e: Throwable) {
-            Log.e("getAllVideoBuckets", "Error querying video buckets", e)
+            e.printStackTrace()
             emit(emptyList())
         }
     }
@@ -286,7 +286,7 @@ class MediaRepositoryImpl @Inject constructor(
                             )
                         }
                     } catch (e: Throwable) {
-                        Log.e("getAllImageAlbums", "Error processing album data", e)
+                        e.printStackTrace()
                     }
                 } while (cursor.moveToNext())
 
@@ -294,7 +294,6 @@ class MediaRepositoryImpl @Inject constructor(
                 emit(result)
             } ?: emit(emptyList())
         } catch (e: Throwable) {
-            Log.e("getAllImageAlbums", "Error querying image albums", e)
             emit(emptyList())
         }
     }
@@ -305,10 +304,12 @@ class MediaRepositoryImpl @Inject constructor(
             val selectionArgs: Array<String>?
 
             if (mediaId == "-1") {
-                selection = "${MediaStore.Video.Media.SIZE} > 0 AND ${MediaStore.Video.Media.MIME_TYPE} NOT LIKE ?"
+                selection =
+                    "${MediaStore.Video.Media.SIZE} > 0 AND ${MediaStore.Video.Media.MIME_TYPE} NOT LIKE ?"
                 selectionArgs = arrayOf("video/%cache%")
             } else {
-                selection = "${MediaStore.Video.Media.BUCKET_ID} = ? AND ${MediaStore.Video.Media.SIZE} > 0 AND ${MediaStore.Video.Media.MIME_TYPE} NOT LIKE ?"
+                selection =
+                    "${MediaStore.Video.Media.BUCKET_ID} = ? AND ${MediaStore.Video.Media.SIZE} > 0 AND ${MediaStore.Video.Media.MIME_TYPE} NOT LIKE ?"
                 selectionArgs = arrayOf(mediaId, "video/%cache%")
             }
 
@@ -333,12 +334,23 @@ class MediaRepositoryImpl @Inject constructor(
                     return@use
                 }
 
-                val idIndex = cursor.getColumnIndex(MediaStore.Video.Media._ID).takeIf { it != -1 } ?: return@use
-                val titleIndex = cursor.getColumnIndex(MediaStore.Video.Media.TITLE).takeIf { it != -1 } ?: return@use
-                val displayNameIndex = cursor.getColumnIndex(MediaStore.Video.Media.DISPLAY_NAME).takeIf { it != -1 } ?: return@use
-                val sizeIndex = cursor.getColumnIndex(MediaStore.Video.Media.SIZE).takeIf { it != -1 } ?: return@use
-                val mimeTypeIndex = cursor.getColumnIndex(MediaStore.Video.Media.MIME_TYPE).takeIf { it != -1 } ?: return@use
-                val dateModifiedIndex = cursor.getColumnIndex(MediaStore.Video.Media.DATE_MODIFIED).takeIf { it != -1 } ?: return@use
+                val idIndex = cursor.getColumnIndex(MediaStore.Video.Media._ID).takeIf { it != -1 }
+                    ?: return@use
+                val titleIndex =
+                    cursor.getColumnIndex(MediaStore.Video.Media.TITLE).takeIf { it != -1 }
+                        ?: return@use
+                val displayNameIndex =
+                    cursor.getColumnIndex(MediaStore.Video.Media.DISPLAY_NAME).takeIf { it != -1 }
+                        ?: return@use
+                val sizeIndex =
+                    cursor.getColumnIndex(MediaStore.Video.Media.SIZE).takeIf { it != -1 }
+                        ?: return@use
+                val mimeTypeIndex =
+                    cursor.getColumnIndex(MediaStore.Video.Media.MIME_TYPE).takeIf { it != -1 }
+                        ?: return@use
+                val dateModifiedIndex =
+                    cursor.getColumnIndex(MediaStore.Video.Media.DATE_MODIFIED).takeIf { it != -1 }
+                        ?: return@use
 
                 val videoList = mutableListOf<Media>()
 
@@ -369,7 +381,7 @@ class MediaRepositoryImpl @Inject constructor(
                             )
                         )
                     } catch (e: Throwable) {
-                        Log.e("getAllVideos", "Error processing video data", e)
+                        e.printStackTrace()
                     }
                 } while (cursor.moveToNext())
 
@@ -377,7 +389,6 @@ class MediaRepositoryImpl @Inject constructor(
                 emit(result)
             } ?: emit(emptyList())
         } catch (e: Throwable) {
-            Log.e("getAllVideos", "Error querying videos", e)
             emit(emptyList())
         }
     }

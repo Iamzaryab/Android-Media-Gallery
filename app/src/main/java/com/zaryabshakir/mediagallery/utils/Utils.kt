@@ -11,12 +11,12 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.zaryabshakir.mediagallery.GlideApp
 import com.zaryabshakir.mediagallery.R
 
-fun checkAndRequestGalleryPermission(activity: Activity): Boolean {
-    return if (Build.VERSION.SDK_INT >= 33) {
+fun checkMultiplePermissions(activity: Activity): Boolean {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         ActivityCompat.checkSelfPermission(
             activity,
             Manifest.permission.READ_MEDIA_IMAGES
-        ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+        ) == PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(
             activity,
             Manifest.permission.READ_MEDIA_VIDEO
         ) == PackageManager.PERMISSION_GRANTED
@@ -30,6 +30,10 @@ fun checkAndRequestGalleryPermission(activity: Activity): Boolean {
     }
 
 }
+
+fun checkPermission(activity: Activity, permission: String) = ActivityCompat.checkSelfPermission(
+    activity,
+    permission ) == PackageManager.PERMISSION_GRANTED
 
 fun loadThumbnail(imageView: ImageView, uri: Uri) {
     GlideApp.with(imageView)

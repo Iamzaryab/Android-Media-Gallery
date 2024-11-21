@@ -26,7 +26,7 @@ class PlayVideoFragment : Fragment(R.layout.fragment_play_video) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding){
+        with(binding) {
             videoView.setVideoURI(args.media.getUri())
             videoView.setOnPreparedListener { mediaPlayer ->
                 mediaPlayer.start()
@@ -37,8 +37,8 @@ class PlayVideoFragment : Fragment(R.layout.fragment_play_video) {
 
     override fun onPause() {
         super.onPause()
-        with(binding){
-            if(videoView.isPlaying)
+        with(binding) {
+            if (videoView.isPlaying)
                 videoView.pause()
         }
     }
