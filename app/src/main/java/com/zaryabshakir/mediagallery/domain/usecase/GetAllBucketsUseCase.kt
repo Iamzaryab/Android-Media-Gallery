@@ -12,11 +12,7 @@ class GetAllBucketsUseCase @Inject constructor(private val repository: MediaRepo
     fun getAllBuckets(mediaType: String): Flow<List<BucketUIDataModel>> = when (mediaType) {
         MediaType.IMAGE.name -> {
             repository.getAllImageBuckets()
-                .map { bucketList ->
-                    bucketList.map { bucket ->
-                        BucketUIDataModel(bucket)
-                    }
-                }
+                .map { bucketList -> bucketList.map { bucket -> BucketUIDataModel(bucket) } }
         }
 
         MediaType.VIDEO.name -> {

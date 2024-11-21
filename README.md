@@ -87,6 +87,10 @@ This project handles media access permissions for images and videos based on And
 
 ---
 
+## NOTE
+- **Im using jbr21 gradle jdk in my Android Studio**
+  ![JDK](gradle.png "JDK")
+
 ## How to Run the Project
 
 1. Clone the repository:
