@@ -1,9 +1,9 @@
 package com.zaryabshakir.mediagallery.presentation.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.zaryabshakir.mediagallery.constants.Constants
 import com.zaryabshakir.mediagallery.databinding.LayoutItemMediaBinding
 import com.zaryabshakir.mediagallery.uimodel.MediaUIDataModel
 import com.zaryabshakir.mediagallery.utils.hide
@@ -39,7 +39,7 @@ class MediaItemsAdapter(
                     videoIcon.show()
                 else
                     videoIcon.hide()
-                loadThumbnail(ivThumbnail, media.getUri())
+                loadThumbnail(ivThumbnail, media.getUri(),Constants.THUMBNAIL_SIZE)
                 txtTitle.text = media.getDisplayName()
                 ivThumbnail.setOnClickListener {
                     onMediaSelected.invoke(media)

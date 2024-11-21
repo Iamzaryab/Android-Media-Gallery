@@ -59,7 +59,6 @@ dependencies {
     implementation (libs.lottie)
 
     testImplementation(libs.test.junit)
-//    androidTestImplementation(libs.android.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
     testImplementation (libs.mockito.core)
     testImplementation (libs.kotlinx.coroutines.test)

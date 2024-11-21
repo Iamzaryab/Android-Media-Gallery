@@ -45,20 +45,14 @@ fun checkPermission(activity: Activity, permission: String) = ActivityCompat.che
     permission
 ) == PackageManager.PERMISSION_GRANTED
 
-fun loadThumbnail(imageView: ImageView, uri: Uri) {
+fun loadThumbnail(imageView: ImageView, uri: Uri,size:Int) {
     GlideApp.with(imageView)
         .load(uri)
-        .override(300)
+        .override(size)
         .placeholder(R.drawable.default_img)
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(imageView)
 }
 
-fun load(imageView: ImageView, uri: Uri) {
-    GlideApp.with(imageView)
-        .load(uri)
-        .override(1000)
-        .transition(DrawableTransitionOptions.withCrossFade())
-        .into(imageView)
-}
+
 

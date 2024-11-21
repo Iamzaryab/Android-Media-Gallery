@@ -10,7 +10,6 @@ androidAppcompat = "1.7.0"
 material = "1.12.0"
 constraintlayout = "2.2.0"
 junit = "4.13.2"
-androidTestExtJunit = "1.2.1"
 espressoCore = "3.6.1"
 navigation = "2.8.4"
 glide = "4.16.0"
@@ -30,7 +29,6 @@ mockito_core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore
 powermock-api-mockito2 = { module = "org.powermock:powermock-api-mockito2", version.ref = "powermockModuleJunit4" }
 powermock-module-junit4 = { module = "org.powermock:powermock-module-junit4", version.ref = "powermockModuleJunit4" }
 test_junit = { module = "junit:junit", version.ref = "junit" }
-android_test_ext_junit = { module = "androidx.test.ext:junit", version.ref = "androidTestExtJunit" }
 espresso_core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 navigation_fragment_ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 navigation_ui_ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
