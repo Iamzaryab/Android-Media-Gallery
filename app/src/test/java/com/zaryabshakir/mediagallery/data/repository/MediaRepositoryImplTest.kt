@@ -285,19 +285,19 @@ class MediaRepositoryImplTest {
         ).thenReturn(cursor)
 
         `when`(cursor.moveToFirst()).thenReturn(true)
-        `when`(cursor.moveToNext()).thenReturn(true, false) // Two rows
+        `when`(cursor.moveToNext()).thenReturn(true, false)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media._ID)).thenReturn(0)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media.TITLE)).thenReturn(1)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME)).thenReturn(2)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media.SIZE)).thenReturn(3)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media.MIME_TYPE)).thenReturn(4)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media.DATE_MODIFIED)).thenReturn(5)
-        `when`(cursor.getLong(0)).thenReturn(101L) // _ID
-        `when`(cursor.getString(1)).thenReturn("Title1") // TITLE
-        `when`(cursor.getString(2)).thenReturn("DisplayName1") // DISPLAY_NAME
-        `when`(cursor.getLong(3)).thenReturn(12345L) // SIZE
-        `when`(cursor.getString(4)).thenReturn("image/jpeg") // MIME_TYPE
-        `when`(cursor.getLong(5)).thenReturn(1625097600L) // DATE_MODIFIED
+        `when`(cursor.getLong(0)).thenReturn(101L)
+        `when`(cursor.getString(1)).thenReturn("Title1")
+        `when`(cursor.getString(2)).thenReturn("DisplayName1")
+        `when`(cursor.getLong(3)).thenReturn(12345L)
+        `when`(cursor.getString(4)).thenReturn("image/jpeg")
+        `when`(cursor.getLong(5)).thenReturn(1625097600L)
 
         val result = mediaRepository.getAllImages("123").toList()
 
@@ -385,19 +385,19 @@ class MediaRepositoryImplTest {
         ).thenReturn(cursor)
 
         `when`(cursor.moveToFirst()).thenReturn(true)
-        `when`(cursor.moveToNext()).thenReturn(true, false) // Two rows
+        `when`(cursor.moveToNext()).thenReturn(true, false)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media._ID)).thenReturn(0)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media.TITLE)).thenReturn(1)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME)).thenReturn(2)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media.SIZE)).thenReturn(3)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media.MIME_TYPE)).thenReturn(4)
         `when`(cursor.getColumnIndex(MediaStore.Images.Media.DATE_MODIFIED)).thenReturn(5)
-        `when`(cursor.getLong(0)).thenReturn(101L) // _ID
-        `when`(cursor.getString(1)).thenReturn("Title1") // TITLE
-        `when`(cursor.getString(2)).thenReturn("DisplayName1") // DISPLAY_NAME
-        `when`(cursor.getLong(3)).thenReturn(12345L) // SIZE
-        `when`(cursor.getString(4)).thenReturn("image/jpeg") // MIME_TYPE
-        `when`(cursor.getLong(5)).thenReturn(1625097600L) // DATE_MODIFIED
+        `when`(cursor.getLong(0)).thenReturn(101L)
+        `when`(cursor.getString(1)).thenReturn("Title1")
+        `when`(cursor.getString(2)).thenReturn("DisplayName1")
+        `when`(cursor.getLong(3)).thenReturn(12345L)
+        `when`(cursor.getString(4)).thenReturn("image/jpeg")
+        `when`(cursor.getLong(5)).thenReturn(1625097600L)
 
         val result = mediaRepository.getAllVideos("123").toList()
 
