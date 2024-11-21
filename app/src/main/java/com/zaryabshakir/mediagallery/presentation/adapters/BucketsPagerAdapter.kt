@@ -1,9 +1,9 @@
-package com.zaryabshakir.mediagallery.presentation.adaptors
+package com.zaryabshakir.mediagallery.presentation.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ViewPagerAdapter(
+class BucketsPagerAdapter(
     fragmentActivity: Fragment,
     private val fragments: List<Fragment>
 ) : FragmentStateAdapter(fragmentActivity) {

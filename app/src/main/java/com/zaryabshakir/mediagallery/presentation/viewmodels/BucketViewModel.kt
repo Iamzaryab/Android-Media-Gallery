@@ -1,7 +1,7 @@
 package com.zaryabshakir.mediagallery.presentation.viewmodels
 
 import androidx.lifecycle.viewModelScope
-import com.zaryabshakir.mediagallery.domain.GetAllBucketsUseCase
+import com.zaryabshakir.mediagallery.domain.usecase.GetAllBucketsUseCase
 import com.zaryabshakir.mediagallery.presentation.events.BucketIntent
 import com.zaryabshakir.mediagallery.presentation.events.BucketUIEvent
 import dagger.hilt.android.lifecycle.HiltViewModel

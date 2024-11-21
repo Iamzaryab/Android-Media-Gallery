@@ -21,14 +21,15 @@ class ImageViewerFragment : Fragment(R.layout.fragment_image_viewer) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_image_viewer, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_image_viewer, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding){
-            load(imageView,args.media.getUri())
+        with(binding) {
+            load(imageView, args.media.getUri())
         }
 
     }

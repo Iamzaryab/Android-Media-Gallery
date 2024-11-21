@@ -6,5 +6,5 @@ interface BucketUIModel {
     fun getId(): Long
     fun getName(): String
     fun getThumbnailUri(): Uri
-    fun isVideo():Boolean
+    fun isVideo(): Boolean
 }

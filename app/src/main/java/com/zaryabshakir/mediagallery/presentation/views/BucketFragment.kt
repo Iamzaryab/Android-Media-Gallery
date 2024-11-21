@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.zaryabshakir.mediagallery.R
 import com.zaryabshakir.mediagallery.constants.Constants
 import com.zaryabshakir.mediagallery.databinding.FragmentBucketsBinding
-import com.zaryabshakir.mediagallery.presentation.adaptors.MediaBucketAdaptor
+import com.zaryabshakir.mediagallery.presentation.adapters.MediaBucketAdapter
 import com.zaryabshakir.mediagallery.presentation.events.BucketIntent
 import com.zaryabshakir.mediagallery.presentation.events.BucketUIEvent
 import com.zaryabshakir.mediagallery.presentation.viewmodels.BucketViewModel
@@ -26,13 +26,13 @@ import kotlinx.coroutines.launch
 class BucketFragment : Fragment(R.layout.fragment_buckets) {
     private lateinit var binding: FragmentBucketsBinding
     private val viewModel: BucketViewModel by viewModels()
-    private lateinit var bucketsAdaptor: MediaBucketAdaptor
+    private lateinit var bucketsAdaptor: MediaBucketAdapter
     private var type: String = Constants.EMPTY_STRING
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            type= it.getString(Constants.MEDIA_TYPE)?:Constants.EMPTY_STRING
+            type = it.getString(Constants.MEDIA_TYPE) ?: Constants.EMPTY_STRING
         }
     }
 
@@ -58,9 +58,9 @@ class BucketFragment : Fragment(R.layout.fragment_buckets) {
                     when (event) {
                         is BucketUIEvent.OnFetchBuckets -> {
                             binding.listBuckets.apply {
-                                bucketsAdaptor = MediaBucketAdaptor(
+                                bucketsAdaptor = MediaBucketAdapter(
                                     buckets = event.buckets,
-                                    onBucketSelected = {onBucketSelected(it) })
+                                    onBucketSelected = { onBucketSelected(it) })
                                 adapter = bucketsAdaptor
                             }
                         }
@@ -73,8 +73,12 @@ class BucketFragment : Fragment(R.layout.fragment_buckets) {
 
     }
 
-    private fun onBucketSelected(bucketUIDataModel: BucketUIDataModel){
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMediaFragment(bucketUIDataModel))
+    private fun onBucketSelected(bucketUIDataModel: BucketUIDataModel) {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToMediaFragment(
+                bucketUIDataModel
+            )
+        )
     }
 
     companion object {

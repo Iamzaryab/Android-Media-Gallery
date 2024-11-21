@@ -10,5 +10,5 @@ data class Bucket(
     val name: String,
     val thumbnailUri: Uri,
     val dateModified: Long,
-    val isVideo:Boolean
+    val isVideo: Boolean
 ) : Parcelable
