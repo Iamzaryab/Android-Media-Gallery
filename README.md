@@ -46,6 +46,8 @@ This project follows the **Clean Architecture** pattern:
     - Fragments only fire intents.
     - ViewModels emit `UIEvents` using `StateFlow`.
     - Fragments collect and handle `UIEvents`.
+    - Utilizes **UIDataModels** for mapping data to UI-friendly structures, ensuring clean separation between business logic and UI rendering.
+
 
 ---
 
