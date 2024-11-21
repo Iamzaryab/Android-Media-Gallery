@@ -3,18 +3,16 @@ package com.zaryabshakir.mediagallery.presentation.views
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.zaryabshakir.mediagallery.R
 import com.zaryabshakir.mediagallery.constants.MediaType
 import com.zaryabshakir.mediagallery.databinding.FragmentHomeBinding
 import com.zaryabshakir.mediagallery.presentation.adapters.BucketsPagerAdapter
+import com.zaryabshakir.mediagallery.presentation.base.BaseFragment
 import com.zaryabshakir.mediagallery.utils.checkMultiplePermissions
 import com.zaryabshakir.mediagallery.utils.checkPermission
 import com.zaryabshakir.mediagallery.utils.hide
@@ -22,23 +20,14 @@ import com.zaryabshakir.mediagallery.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(R.layout.fragment_home) {
-    private lateinit var binding: FragmentHomeBinding
-
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val requestGalleryPermission = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { _ ->
         setupViewPagerBasedOnPermissions()
     }
+    override val layoutId: Int get() = R.layout.fragment_home
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,7 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun initClickListeners() {
-        with(binding) {
+        with(getBinding()) {
             lvPermissionNotGranted.btnAllow.setOnClickListener {
                 showPermissionDialog()
             }
@@ -93,7 +82,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun showPermissionRequiredView() {
-        with(binding) {
+        with(getBinding()) {
             lvPermissionNotGranted.root.show()
             bucketsTab.hide()
             bucketPager.hide()
@@ -101,7 +90,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun showBuckets() {
-        with(binding) {
+        with(getBinding()) {
             lvPermissionNotGranted.root.hide()
             bucketsTab.show()
             bucketPager.show()
@@ -109,7 +98,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun initViews() {
-        with(binding) {
+        with(getBinding()) {
             lvPermissionNotGranted.root.hide()
             bucketsTab.show()
             bucketPager.show()
@@ -144,7 +133,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         showBuckets()
         val adapter = BucketsPagerAdapter(this, fragments)
-        with(binding) {
+        with(getBinding()) {
             bucketPager.adapter = adapter
             TabLayoutMediator(bucketsTab, bucketPager) { tab, position ->
                 tab.text = tabs[position]

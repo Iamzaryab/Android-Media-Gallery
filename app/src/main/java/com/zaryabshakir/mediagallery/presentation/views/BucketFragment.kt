@@ -1,11 +1,7 @@
 package com.zaryabshakir.mediagallery.presentation.views
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -15,6 +11,7 @@ import com.zaryabshakir.mediagallery.R
 import com.zaryabshakir.mediagallery.constants.Constants
 import com.zaryabshakir.mediagallery.databinding.FragmentBucketsBinding
 import com.zaryabshakir.mediagallery.presentation.adapters.MediaBucketAdapter
+import com.zaryabshakir.mediagallery.presentation.base.BaseFragment
 import com.zaryabshakir.mediagallery.presentation.events.BucketIntent
 import com.zaryabshakir.mediagallery.presentation.events.BucketUIEvent
 import com.zaryabshakir.mediagallery.presentation.viewmodels.BucketViewModel
@@ -25,8 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class BucketFragment : Fragment(R.layout.fragment_buckets) {
-    private lateinit var binding: FragmentBucketsBinding
+class BucketFragment : BaseFragment<FragmentBucketsBinding>() {
     private val viewModel: BucketViewModel by viewModels()
     private lateinit var bucketsAdaptor: MediaBucketAdapter
     private var type: String = Constants.EMPTY_STRING
@@ -38,14 +34,7 @@ class BucketFragment : Fragment(R.layout.fragment_buckets) {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_buckets, container, false)
-        return binding.root
-    }
+    override val layoutId: Int get() = R.layout.fragment_buckets
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,7 +48,7 @@ class BucketFragment : Fragment(R.layout.fragment_buckets) {
                 viewModel.state.collect { event ->
                     when (event) {
                         is BucketUIEvent.OnFetchBuckets -> {
-                            with(binding) {
+                            with(getBinding()) {
                                 if (event.buckets.isEmpty()) {
                                     lvNoMedia.root.show()
                                 } else {

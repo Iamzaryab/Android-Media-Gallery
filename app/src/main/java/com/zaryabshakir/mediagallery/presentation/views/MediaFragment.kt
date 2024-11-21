@@ -1,11 +1,7 @@
 package com.zaryabshakir.mediagallery.presentation.views
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -15,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.zaryabshakir.mediagallery.R
 import com.zaryabshakir.mediagallery.databinding.FragmentMediaBinding
 import com.zaryabshakir.mediagallery.presentation.adapters.MediaItemsAdapter
+import com.zaryabshakir.mediagallery.presentation.base.BaseFragment
 import com.zaryabshakir.mediagallery.presentation.events.BucketUIEvent
 import com.zaryabshakir.mediagallery.presentation.events.MediaIntent
 import com.zaryabshakir.mediagallery.presentation.events.MediaUIEvent
@@ -24,20 +21,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MediaFragment : Fragment(R.layout.fragment_media) {
-    private lateinit var binding: FragmentMediaBinding
+class MediaFragment : BaseFragment<FragmentMediaBinding>() {
+    override val layoutId: Int get() = R.layout.fragment_media
     private val viewModel: MediaViewModel by viewModels()
     private lateinit var mediaAdaptor: MediaItemsAdapter
     private val args: MediaFragmentArgs by navArgs()
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_media, container, false)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpObservers()
@@ -50,7 +38,7 @@ class MediaFragment : Fragment(R.layout.fragment_media) {
                 viewModel.state.collect { event ->
                     when (event) {
                         is MediaUIEvent.OnFetchMedia -> {
-                            binding.listBuckets.apply {
+                            getBinding().listBuckets.apply {
                                 mediaAdaptor = MediaItemsAdapter(
                                     media = event.media,
                                     onMediaSelected = { onMediaClicked(it) })
@@ -73,8 +61,7 @@ class MediaFragment : Fragment(R.layout.fragment_media) {
                     mediaUIDataModel
                 )
             )
-        }
-        else{
+        } else {
             findNavController().navigate(
                 MediaFragmentDirections.actionMediaFragmentToImageViewerFragment(
                     mediaUIDataModel
