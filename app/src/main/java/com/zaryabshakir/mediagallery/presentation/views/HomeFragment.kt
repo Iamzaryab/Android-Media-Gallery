@@ -17,6 +17,8 @@ import com.zaryabshakir.mediagallery.databinding.FragmentHomeBinding
 import com.zaryabshakir.mediagallery.presentation.adapters.BucketsPagerAdapter
 import com.zaryabshakir.mediagallery.utils.checkMultiplePermissions
 import com.zaryabshakir.mediagallery.utils.checkPermission
+import com.zaryabshakir.mediagallery.utils.hide
+import com.zaryabshakir.mediagallery.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,7 +42,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
+        initClickListeners()
         checkIfPermissionsPermitted()
+    }
+
+    private fun initClickListeners() {
+        with(binding) {
+            lvPermissionNotGranted.btnAllow.setOnClickListener {
+                showPermissionDialog()
+            }
+        }
     }
 
     private fun checkIfPermissionsPermitted() {
@@ -69,14 +81,39 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun showPermissionDialog() {
         context?.let {
-            AlertDialog.Builder(it)
-                .setTitle("Photo Access Required")
-                .setMessage("This app needs access to your photos to display them in the gallery.")
-                .setPositiveButton("Allow") { _, _ -> requestMediaPermissions() }
-                .setNegativeButton("Cancel", null)
+            AlertDialog.Builder(it, R.style.CustomAlertDialogTheme)
+                .setTitle(getString(R.string.permission_title))
+                .setMessage(getString(R.string.permission_description))
+                .setPositiveButton(getString(R.string.allow)) { _, _ -> requestMediaPermissions() }
+                .setNegativeButton(getString(R.string.cancel)) { _, _ -> showPermissionRequiredView() }
+                .setCancelable(false)
                 .show()
         }
 
+    }
+
+    private fun showPermissionRequiredView() {
+        with(binding) {
+            lvPermissionNotGranted.root.show()
+            bucketsTab.hide()
+            bucketPager.hide()
+        }
+    }
+
+    private fun showBuckets() {
+        with(binding) {
+            lvPermissionNotGranted.root.hide()
+            bucketsTab.show()
+            bucketPager.show()
+        }
+    }
+
+    private fun initViews() {
+        with(binding) {
+            lvPermissionNotGranted.root.hide()
+            bucketsTab.show()
+            bucketPager.show()
+        }
     }
 
     private fun setupViewPagerBasedOnPermissions() {
@@ -90,7 +127,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
                 if (checkPermission(mActivity, Manifest.permission.READ_MEDIA_VIDEO)) {
                     fragments.add(BucketFragment.newInstance(MediaType.VIDEO.name))
-                    tabs.add(getString(R.string.images))
+                    tabs.add(getString(R.string.videos))
                 }
             } else {
                 if (checkPermission(mActivity, Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -102,13 +139,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
         if (fragments.isEmpty()) {
+            showPermissionRequiredView()
             return
         }
+        showBuckets()
         val adapter = BucketsPagerAdapter(this, fragments)
-
         with(binding) {
-            viewPager.adapter = adapter
-            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            bucketPager.adapter = adapter
+            TabLayoutMediator(bucketsTab, bucketPager) { tab, position ->
                 tab.text = tabs[position]
             }.attach()
         }

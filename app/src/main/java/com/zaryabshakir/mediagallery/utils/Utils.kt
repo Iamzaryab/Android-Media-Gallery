@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
+import android.view.View
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -31,9 +32,18 @@ fun checkMultiplePermissions(activity: Activity): Boolean {
 
 }
 
+fun View.hide() {
+    visibility = View.GONE
+}
+
+fun View.show() {
+    visibility = View.VISIBLE
+}
+
 fun checkPermission(activity: Activity, permission: String) = ActivityCompat.checkSelfPermission(
     activity,
-    permission ) == PackageManager.PERMISSION_GRANTED
+    permission
+) == PackageManager.PERMISSION_GRANTED
 
 fun loadThumbnail(imageView: ImageView, uri: Uri) {
     GlideApp.with(imageView)

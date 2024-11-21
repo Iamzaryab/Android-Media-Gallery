@@ -4,4 +4,8 @@
     <string name="description_image" translatable="false">image</string>
     <string name="images">Images</string>
     <string name="videos">Videos</string>
+    <string name="permission_title">Photo Access Required</string>
+    <string name="permission_description">This app needs access to your photos to display them in the gallery.</string>
+    <string name="allow">Allow</string>
+    <string name="cancel">Cancel</string>
 </resources>

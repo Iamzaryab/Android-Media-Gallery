@@ -7,4 +7,9 @@
     <dimen name="size_large">32dp</dimen>
     <dimen name="size_xlarge">40dp</dimen>
     <dimen name="size_xxlarge">48dp</dimen>
+
+    <dimen name="animation_size">150dp</dimen>
+
+    <dimen name="text_title">16sp</dimen>
+    <dimen name="text_description">12sp</dimen>
 </resources>

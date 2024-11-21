@@ -9,7 +9,7 @@
         android:padding="8dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/img"
+            android:id="@+id/iv_thumbnail"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:clickable="true"
@@ -28,31 +28,26 @@
             android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/size_small"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:visibility="gone"
+            android:textSize="@dimen/text_title"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img" />
+            app:layout_constraintTop_toBottomOf="@id/iv_thumbnail" />
 
         <ImageView
             android:id="@+id/videoIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="6dp"
+            android:layout_width="@dimen/size_large"
+            android:layout_height="@dimen/size_large"
             android:adjustViewBounds="true"
-            android:visibility="gone"
             android:contentDescription="@string/description_image"
-            app:layout_constraintBottom_toBottomOf="@id/img"
-            app:layout_constraintEnd_toEndOf="@id/img"
-            app:layout_constraintStart_toStartOf="@id/img"
-            app:layout_constraintTop_toTopOf="@id/img"
-            app:srcCompat="@drawable/play" />
+            app:layout_constraintBottom_toBottomOf="@id/iv_thumbnail"
+            app:layout_constraintEnd_toEndOf="@id/iv_thumbnail"
+            app:layout_constraintStart_toStartOf="@id/iv_thumbnail"
+            app:layout_constraintTop_toTopOf="@id/iv_thumbnail"
+            app:srcCompat="@drawable/ic_play" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

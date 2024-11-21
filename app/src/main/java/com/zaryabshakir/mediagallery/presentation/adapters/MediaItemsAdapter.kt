@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zaryabshakir.mediagallery.databinding.LayoutItemMediaBinding
 import com.zaryabshakir.mediagallery.uimodel.MediaUIDataModel
+import com.zaryabshakir.mediagallery.utils.hide
 import com.zaryabshakir.mediagallery.utils.loadThumbnail
+import com.zaryabshakir.mediagallery.utils.show
 
 class MediaItemsAdapter(
     private val media: List<MediaUIDataModel>,
@@ -34,13 +36,12 @@ class MediaItemsAdapter(
         fun bind(media: MediaUIDataModel) {
             with(binding) {
                 if (media.isVideo())
-                    videoIcon.visibility = View.VISIBLE
+                    videoIcon.show()
                 else
-                    videoIcon.visibility = View.GONE
-                loadThumbnail(img, media.getUri())
-                txtTitle.visibility = View.VISIBLE
+                    videoIcon.hide()
+                loadThumbnail(ivThumbnail, media.getUri())
                 txtTitle.text = media.getDisplayName()
-                img.setOnClickListener {
+                ivThumbnail.setOnClickListener {
                     onMediaSelected.invoke(media)
                 }
             }
