@@ -31,14 +31,13 @@ android {
 
     buildFeatures {
         dataBinding = true
-        viewBinding = true
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 }
 
@@ -52,13 +51,26 @@ dependencies {
     implementation(libs.navigation.ui.ktx)
 
     implementation(libs.hilt)
+    implementation(libs.junit.ktx)
     kapt(libs.hilt.compiler)
 
     implementation(libs.glide)
     kapt (libs.glide.compiler)
+    implementation (libs.lottie)
 
     testImplementation(libs.test.junit)
-    androidTestImplementation(libs.android.test.ext.junit)
+//    androidTestImplementation(libs.android.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
+    testImplementation (libs.mockito.core)
+    testImplementation (libs.kotlinx.coroutines.test)
+    testImplementation (libs.powermock.module.junit4)
+    testImplementation (libs.powermock.api.mockito2)
 }
+tasks.withType<Test> {
+    jvmArgs(
+        "--add-opens", "java.base/java.lang=ALL-UNNAMED",
+        "--add-opens", "java.base/java.util=ALL-UNNAMED"
+    )
+}
+
+

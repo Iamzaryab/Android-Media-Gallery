@@ -1,38 +1,49 @@
 [versions]
-android_gradle_plugin = "8.7.0"
+agp = "8.7.2"
+kotlinxCoroutinesTest = "1.7.3"
+lottie = "6.0.0"
+mockitoCore = "3.12.4"
 navigation_safe_args = "2.8.4"
 kotlin = "2.0.0"
 android_core_ktx = "1.15.0"
-android_appcompat = "1.7.0"
+androidAppcompat = "1.7.0"
 material = "1.12.0"
 constraintlayout = "2.2.0"
 junit = "4.13.2"
-android_test_ext_junit = "1.2.1"
-espresso_core = "3.6.1"
+androidTestExtJunit = "1.2.1"
+espressoCore = "3.6.1"
 navigation = "2.8.4"
 glide = "4.16.0"
 hilt = "2.50"
+junitKtx = "1.2.1"
+powermockModuleJunit4 = "2.0.9"
 
 
 [libraries]
 core_ktx = { module = "androidx.core:core-ktx", version.ref = "android_core_ktx" }
-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "android_appcompat" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidAppcompat" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+mockito_core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+powermock-api-mockito2 = { module = "org.powermock:powermock-api-mockito2", version.ref = "powermockModuleJunit4" }
+powermock-module-junit4 = { module = "org.powermock:powermock-module-junit4", version.ref = "powermockModuleJunit4" }
 test_junit = { module = "junit:junit", version.ref = "junit" }
-android_test_ext_junit = { module = "androidx.test.ext:junit", version.ref = "android_test_ext_junit" }
-espresso_core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso_core" }
+android_test_ext_junit = { module = "androidx.test.ext:junit", version.ref = "androidTestExtJunit" }
+espresso_core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 navigation_fragment_ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 navigation_ui_ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide_compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt_compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
-gradle = { module = "com.android.tools.build:gradle", version.ref = "android_gradle_plugin" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 navigation_safe_args = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation_safe_args" }
 hilt_gradle_plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
+junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
 
 [plugins]
-android_application = { id = "com.android.application", version.ref = "android_gradle_plugin" }
-android_library = { id = "com.android.library", version.ref = "android_gradle_plugin" }
+android_application = { id = "com.android.application", version.ref = "agp" }
+android_library = { id = "com.android.library", version.ref = "agp" }
 kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
