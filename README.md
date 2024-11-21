@@ -83,6 +83,8 @@ This project handles media access permissions for images and videos based on And
     - Tested with PowerMockito.
     - Achieved **100% test coverage**.
 
+![Coverage](test_cov.png "Coverage")
+
 ---
 
 ## How to Run the Project
