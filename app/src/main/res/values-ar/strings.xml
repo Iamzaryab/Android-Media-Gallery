@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Android Media Gallery</string>
+    <string name="images">الصور</string>
+    <string name="videos">مقاطع الفيديو</string>
+    <string name="permission_title">مطلوب الوصول إلى الصور</string>
+    <string name="permission_description">يحتاج هذا التطبيق إلى الوصول إلى صورك لعرضها في المعرض.</string>
+    <string name="allow">السماح</string>
+    <string name="cancel">إلغاء</string>
+    <string name="no_item">لم يتم العثور على أي عنصر</string>
+</resources>
