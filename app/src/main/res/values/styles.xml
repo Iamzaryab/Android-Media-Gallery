@@ -4,13 +4,4 @@
         <item name="cornerSize">8dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
-    <style name="SelectedButton">
-        <item name="android:layout_width">30dp</item>
-        <item name="android:layout_height">30dp</item>
-        <item name="android:scaleType">center</item>
-        <item name="android:background">?roundSelector</item>
-        <item name="android:focusableInTouchMode">false</item>
-        <item name="android:focusable">false</item>
-    </style>
-
 </resources>

@@ -7,8 +7,5 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="background">@color/white</item>
         <!-- Customize your theme here. -->
-
-        <item name="stateSelectedImageGallery">@drawable/state_selected_media</item>
-        <item name="roundSelector">@drawable/round_selector</item>
     </style>
 </resources>
