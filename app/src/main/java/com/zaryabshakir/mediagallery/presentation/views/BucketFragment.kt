@@ -19,6 +19,8 @@ import com.zaryabshakir.mediagallery.presentation.events.BucketIntent
 import com.zaryabshakir.mediagallery.presentation.events.BucketUIEvent
 import com.zaryabshakir.mediagallery.presentation.viewmodels.BucketViewModel
 import com.zaryabshakir.mediagallery.uimodel.BucketUIDataModel
+import com.zaryabshakir.mediagallery.utils.hide
+import com.zaryabshakir.mediagallery.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -57,12 +59,20 @@ class BucketFragment : Fragment(R.layout.fragment_buckets) {
                 viewModel.state.collect { event ->
                     when (event) {
                         is BucketUIEvent.OnFetchBuckets -> {
-                            binding.listBuckets.apply {
-                                bucketsAdaptor = MediaBucketAdapter(
-                                    buckets = event.buckets,
-                                    onBucketSelected = { onBucketSelected(it) })
-                                adapter = bucketsAdaptor
+                            with(binding) {
+                                if (event.buckets.isEmpty()) {
+                                    lvNoMedia.root.show()
+                                } else {
+                                    lvNoMedia.root.hide()
+                                    listBuckets.apply {
+                                        bucketsAdaptor = MediaBucketAdapter(
+                                            buckets = event.buckets,
+                                            onBucketSelected = { onBucketSelected(it) })
+                                        adapter = bucketsAdaptor
+                                    }
+                                }
                             }
+
                         }
 
                         is BucketUIEvent.Loading -> Unit
