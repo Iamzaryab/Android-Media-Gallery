@@ -30,7 +30,7 @@ class PlayVideoFragment : BaseFragment<FragmentPlayVideoBinding>() {
         super.onPause()
         with(getBinding()) {
             videoView.isPlaying.takeIf { it }?.let {
-                videoView.stopPlayback()
+                videoView.pause()
             }
         }
 
