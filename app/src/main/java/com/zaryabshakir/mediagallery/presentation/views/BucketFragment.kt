@@ -31,7 +31,7 @@ class BucketFragment : BaseFragment<FragmentBucketsBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            type = it.getString(Constants.MEDIA_TYPE) ?: Constants.EMPTY_STRING
+            type = it.getString(Constants.MEDIA_TYPE).orEmpty()
         }
     }
 
